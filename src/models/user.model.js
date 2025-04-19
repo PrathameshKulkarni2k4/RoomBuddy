@@ -18,29 +18,24 @@ const userSchema = new Schema(
             lowercase: true,
             trim: true,
         },
+        phoneNo: {
+            type: String,
+            required: true,
+        },
         fullName: {
             type: String,
             required: true,
             trim: true,
             index: true,
         },
-        avatar: {
-            type: String, // cloudinary url (same as aws)
-            required: true,
-            
-        },
-        coverImage: {
-            type: String, // cloudinary url 
-        },
-        watchHistory: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "Video"
-            }
-        ],
         password: {
             type: String,
             required: [true, 'Password is required']
+        },
+        role : {
+            type : String,
+            enum: ['user', 'owner'],
+            default: "user",
         },
         refreshToken: {
             type: String,
